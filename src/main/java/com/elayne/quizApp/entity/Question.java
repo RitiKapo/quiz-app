@@ -1,14 +1,16 @@
 package com.elayne.quizApp.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "question")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "question_title")
     private String questionTitle;
     @Column(name = "option1")
@@ -25,5 +27,4 @@ public class Question {
     private String difficultyLevel;
     @Column(name = "category")
     private String category;
-
 }
