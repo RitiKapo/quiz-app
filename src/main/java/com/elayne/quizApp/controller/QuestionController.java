@@ -3,6 +3,7 @@ package com.elayne.quizApp.controller;
 import com.elayne.quizApp.entity.Question;
 import com.elayne.quizApp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,27 +19,27 @@ public class QuestionController {
     }
 
     @GetMapping("/allQuestions")
-    public List<Question> getQuestions() {
+    public ResponseEntity<List<Question>> getQuestions() {
         return questionService.getAllQuestions();
     }
 
     @GetMapping("/category/{category}")
-    public List<Question> getQuestionsByCategory(@PathVariable String category) {
+    public ResponseEntity<List<Question>> getQuestionsByCategory(@PathVariable String category) {
         return questionService.getQuestionsByCategory(category);
     }
 
     @PostMapping("/add")
-    public Question addQuestion(@RequestBody Question question) {
+    public ResponseEntity<String> addQuestion(@RequestBody Question question) {
         return questionService.addQuestion(question);
     }
 
     @PutMapping("/update")
-    public Question updateQuestion(@RequestBody Question question) {
+    public ResponseEntity<String> updateQuestion(@RequestBody Question question) {
         return questionService.updateQuestion(question);
     }
 
     @DeleteMapping("/{questionID}")
-    public String deleteQuestion(@PathVariable int questionID) {
+    public ResponseEntity<String> deleteQuestion(@PathVariable int questionID) {
         return questionService.deleteQuestion(questionID);
     }
 }
