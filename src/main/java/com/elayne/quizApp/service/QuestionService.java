@@ -49,7 +49,7 @@ public class QuestionService {
     public ResponseEntity<String> updateQuestion(Question question) {
         try {
             Question question1 = findById(question.getId());
-            questionDao.save(question1);
+            questionDao.save(question);
             return new ResponseEntity<>("Updated the question having ID: " + question.getId(), HttpStatus.CREATED);
         } catch (Exception e) {
             // since the null part will be handled inside the 'findById()'
